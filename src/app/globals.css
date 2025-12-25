@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
+  --neon-blue: #00d4ff;
+  --neon-cyan: #00ffff;
+  --electric-blue: #0066ff;
 }
 
 @theme inline {
@@ -10,17 +13,55 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-electric-blue: var(--electric-blue);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-blue);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+}
+
+/* Glow effect utility */
+.glow {
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue),
+    0 0 30px var(--neon-blue), 0 0 40px var(--electric-blue);
+}
+
+.glow-strong {
+  text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue),
+    0 0 60px var(--neon-blue), 0 0 80px var(--electric-blue),
+    0 0 100px var(--electric-blue);
+}
+
+/* Lightning animation */
+@keyframes lightning {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
